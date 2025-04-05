@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducció a p5.js</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #007BFF;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 10px;
+        }
+
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Introducció Completa a p5.js</h1>
+            <p>Explora el poder de p5.js per crear art interactiu, gràfics i molt més.</p>
+        </header>
+
+        <section id="que-es-p5">
+            <h2>Què és p5.js?</h2>
+            <p>p5.js és una biblioteca de JavaScript que facilita la programació creativa i el treball amb gràfics, so i més. A continuació, et mostrem un exemple de com crear un llenç i dibuixar un cercle.</p>
+            <h3>Exemple Bàsic:</h3>
+            <pre>
+function setup() {
+  createCanvas(400, 400); // Crear el llenç
+}
+
+function draw() {
+  background(220); // Fons gris clar
+  ellipse(200, 200, 50, 50); // Dibuixa un cercle
+}
+            </pre>
+            <p>Aquest codi genera un llenç de 400x400 píxels i dibuixa un cercle al centre. Fàcil, oi?</p>
+        </section>
+
+        <section id="estructura">
+            <h2>Estructura bàsica</h2>
+            <p>A p5.js, sempre trobaràs dues funcions principals: <strong>setup()</strong> i <strong>draw()</strong>.</p>
+            <pre>
+function setup() {
+  createCanvas(400, 400); // Llenç inicial
+}
+
+function draw() {
+  background(220); // Fons que s'actualitza contínuament
+}
+            </pre>
+            <p><strong>setup()</strong> s'executa una sola vegada al principi, i <strong>draw()</strong> s'executa repetidament per actualitzar la pantalla.</p>
+        </section>
+
+        <section id="variables">
+            <h2>Treballant amb variables</h2>
+            <p>Les variables s'utilitzen per emmagatzemar valors que poden canviar durant l'execució del programa. En el següent exemple, controlem la posició d'un cercle utilitzant variables.</p>
+            <pre>
+let x = 200;
+let y = 200;
+
+function draw() {
+  background(220);
+  ellipse(x, y, 50, 50); // Dibuixa el cercle a la posició (x, y)
+  x += 2; // Mou el cercle cap a la dreta
+}
+            </pre>
+            <p>El valor de <strong>x</strong> augmenta a cada fotograma, fent que el cercle es desplaci horitzontalment.</p>
+        </section>
+
+        <section id="funcions">
+            <h2>Ús de funcions</h2>
+            <p>Les funcions permeten organitzar el codi i reutilitzar-lo de manera més eficient. A continuació es mostra com crear una funció per dibuixar cercles en diferents posicions.</p>
+            <pre>
+function dibuixaCercle(x, y) {
+  ellipse(x, y, 50, 50); // Dibuixa el cercle a la posició (x, y)
+}
+
+function draw() {
+  background(220);
+  dibuixaCercle(100, 100);
+  dibuixaCercle(300, 300);
+}
+            </pre>
+            <p>Aquest codi dibuixa dos cercles en posicions diferents al mateix temps.</p>
+        </section>
+
+        <section id="exemples">
+            <h2>Exemples interactius</h2>
+            <h3>Exemple 1: Seguir el ratolí</h3>
+            <pre>
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  ellipse(mouseX, mouseY, 50, 50); // Dibuixa un cercle a la posició del ratolí
+}
+            </pre>
+            <p>Aquest codi dibuixa un cercle que segueix el moviment del ratolí a la pantalla.</p>
+
+            <h3>Exemple 2: Moviment d'un cercle</h3>
+            <pre>
+let x = 0;
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  ellipse(x, height / 2, 50, 50);
+  x += 2;
+  if (x > width) {
+    x = 0;
+  }
+}
+            </pre>
+            <p>Aquest codi mou un cercle horitzontalment per la pantalla i el reinicia quan arriba a la vora.</p>
+        </section>
+
+        <footer>
+            <a href="index.html">Tornar al Joc</a>
+            <p>Creat amb ❤️ per a programadors creatius. Més informació a 
+            <a href="https://p5js.org" target="_blank">p5js.org</a>.</p>
+        </footer>
+    </div>
+</body>
+</html>

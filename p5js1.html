@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia Completa de p5.js</title>
+  <style>
+    /* Estils generals */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Encapçalament */
+    header {
+      background: #6200ea;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2em;
+    }
+
+    /* Navegació */
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #4a0072;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1em;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    /* Contingut */
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+      color: #6200ea;
+      margin-bottom: 10px;
+    }
+
+    section ul {
+      list-style: square;
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    section pre, section code {
+      display: block;
+      background: #f4f4f9;
+      padding: 10px;
+      border-left: 5px solid #6200ea;
+      overflow-x: auto;
+      margin: 10px 0;
+    }
+
+    section pre {
+      white-space: pre-wrap;
+    }
+
+    /* Footer */
+    footer {
+      background: #6200ea;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        margin: 10px 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Guia Completa de p5.js</h1>
+    <p>Explora la programació creativa amb JavaScript!</p>
+  </header>
+
+  <nav>
+    <a href="#que-es">Què és?</a>
+    <a href="#estructura">Estructura</a>
+    <a href="#variables">Variables</a>
+    <a href="#funcions-dibuix">Funcions de Dibuix</a>
+    <a href="#interactivitat">Interactivitat</a>
+    <a href="#multimedia">Multimèdia</a>
+    <a href="#3d">Gràfics 3D</a>
+  </nav>
+
+  <section id="que-es">
+    <h2>Què és p5.js?</h2>
+    <p>
+      p5.js és una biblioteca de JavaScript que permet crear visualitzacions gràfiques interactives de manera senzilla. 
+      És ideal per artistes, dissenyadors, educadors i estudiants que volen experimentar amb programació creativa.
+    </p>
+    <p>
+      Aquesta biblioteca està basada en Processing i funciona directament en navegadors web, la qual cosa la fa molt accessible.
+    </p>
+  </section>
+
+  <section id="estructura">
+    <h2>Estructura d'un Projecte</h2>
+    <p>Un projecte amb p5.js requereix, com a mínim, dos fitxers:</p>
+    <ul>
+      <li><strong>index.html</strong>: Conté l'estructura bàsica HTML i carrega els scripts de p5.js i del codi personalitzat.</li>
+      <li><strong>sketch.js</strong>: Inclou el codi JavaScript del projecte.</li>
+    </ul>
+    <h3>Exemple d'index.html:</h3>
+    <pre>
+<!DOCTYPE html>
+html>
+head>
+  meta charset="UTF-8">
+  title>Projecte p5.js</title>
+  script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js">/script>
+  script src="sketch.js" defer></script>
+/head>
+body>
+/body>
+/html> 
+    </pre>
+
+    <h3>Exemple de sketch.js:</h3>
+    <pre>
+function setup() {
+  createCanvas(400, 400); // Crear un canvas de 400x400 píxels
+}
+
+function draw() {
+  background(220);
+  ellipse(mouseX, mouseY, 50, 50); // Dibuixa un cercle que segueix el cursor
+}
+    </pre>
+  </section>
+
+  <section id="variables">
+    <h2>Tipus de Dades i Variables</h2>
+    <p>p5.js suporta els següents tipus de dades:</p>
+    <ul>
+      <li><strong>int i float:</strong> Enters i números decimals.</li>
+      <li><strong>string:</strong> Texts entre cometes.</li>
+      <li><strong>boolean:</strong> Valors true o false.</li>
+      <li><strong>array:</strong> Llistes de valors.</li>
+      <li><strong>p5.Vector:</strong> Representació de coordenades per treballar en 2D o 3D.</li>
+    </ul>
+  </section>
+
+  <section id="funcions-dibuix">
+    <h2>Funcions de Dibuix</h2>
+    <p>Les funcions més comunes per crear gràfics en p5.js són:</p>
+    <ul>
+      <li><strong>Rectangles i formes bàsiques:</strong> rect(), ellipse(), line(), triangle().</li>
+      <li><strong>Colors:</strong> fill(), stroke(), background().</li>
+      <li><strong>Transformacions:</strong> translate(), rotate(), scale().</li>
+    </ul>
+    <h3>Exemple de Dibuix:</h3>
+    <pre>
+function draw() {
+  background(200);
+  fill(100, 150, 255);
+  rect(50, 50, 100, 100); // Rectangle blau
+}
+    </pre>
+  </section>
+
+  <section id="interactivitat">
+    <h2>Interactivitat</h2>
+    <p>p5.js permet treballar amb esdeveniments del ratolí i el teclat:</p>
+    <ul>
+      <li><strong>Ratolí:</strong> mouseX, mouseY, mousePressed().</li>
+      <li><strong>Teclat:</strong> keyPressed(), keyReleased().</li>
+    </ul>
+    <h3>Exemple d'Interactivitat:</h3>
+    <pre>
+function draw() {
+  background(220);
+  fill(mouseX, mouseY, 150);
+  ellipse(mouseX, mouseY, 50, 50); // Cercle interactiu
+}
+    </pre>
+  </section>
+
+  <section id="multimedia">
+    <h2>Treball amb Multimèdia</h2>
+    <p>Amb p5.js pots carregar i utilitzar imatges, sons i vídeos.</p>
+    <h3>Carregar Imatges:</h3>
+    <pre>
+let img;
+function preload() {
+  img = loadImage('path/to/image.jpg'); // Carregar imatge
+}
+
+function draw() {
+  image(img, 0, 0, width, height); // Mostrar la imatge
+}
+    </pre>
+  </section>
+
+  <section id="3d">
+    <h2>Gràfics 3D</h2>
+    <p>Per treballar en 3D, has d'activar el mode <strong>WEBGL</strong>.</p>
+    <h3>Exemple 3D:</h3>
+    <pre>
+function setup() {
+  createCanvas(400, 400, WEBGL); // Canvas en mode 3D
+}
+
+function draw() {
+  background(100);
+  rotateX(frameCount * 0.01); // Rotació en X
+  rotateY(frameCount * 0.01); // Rotació en Y
+  box(100); // Dibuixar un cub de 100x100x100
+}
+    </pre>
+    <p>
+      Altres formes 3D que pots utilitzar inclouen <strong>sphere()</strong>, <strong>torus()</strong> i <strong>cylinder()</strong>.
+    </p>
+  </section>
+
+  <footer>
+    <p>
+      Tornar al joc  <a href="index.html">Tornar al Joc</a>
+      Més informació  <a href="p5js2.html">Més informació</a>
+      Creat amb ❤️ per a programadors creatius. Més informació a 
+      <a href="https://p5js.org" target="_blank">p5js.org</a>.
+    </p>
+  </footer>
+</body>
+</html>
+
